@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Challenge</title>
+  <meta charset="utf-8">
+
+  <style>
+    .first-class {
+      display: flex;
+      flex-direction: row-reverse;
+      background-color: darkgreen;
+      height: 30vh;
+      width: 60vw;
+    }
+
+    .second-class {
+      display: hidden;
+    }
+
+    .third-class {
+      background-color: black;
+      position: fixed;
+      top: 10vh;
+      left: 10vw;
+    }
+  </style>
+
+  <script src='../../lib/testing.js'></script>
+  <script id='logic'>
+    const createClassNameTests = [
+      { name: 'Test 1', args: ['Test 1'], expected: 'first-class' },
+      { name: 'Test 2', args: ['Test 2'], expected: 'second-class' },
+      { name: 'Test 3', args: ['Test 3'], expected: 'third-class' },
+      { name: 'Test 4', args: ['Test 4'], expected: 'fourth-class' },
+      { name: 'Test 5', args: ['train'], expected: 'train-class' },
+    ];
+
+    function _(which) { }
+
+    testing(createClassName, createClassNameTests);
+  </script>
+  <script id='handler'>function hovercraftHandler(event) {
+      debugger;
+      // read & process user input
+      const whichOne = event.target.id;
+
+      // execute core logic
+      const newClass = whichOne + '-class';
+
+      // display results to user
+      document.getElementById('user-interface').className = newClass;
+
+      // log action for developers
+      console.log('\n-- user action --');
+      console.log('whichOne:', '(' + typeof whichOne + ')', whichOne);
+      console.log('newClass:', '(' + typeof newClass + ')', newClass);
+    }
+  </script>
+</head>
+
+<body>
+  <section id='user-interface'>
+    <div id='Test 1'>class 1</div>
+    <div id='Test 2'>class 2</div>
+    <div id='Test 3'>class 3</div>
+  </section>
+
+  <script id='listeners'>
+    document.getElementById('Test 1').addEventListener('mouseover', hovercraftHandler);
+    document.getElementById('Test 2').addEventListener('mouseover', hovercraftHandler);
+    document.getElementById('Test 3').addEventListener('mouseover', hovercraftHandler);
+  </script>
+</body>
+
+</html>
